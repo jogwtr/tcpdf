@@ -1,6 +1,6 @@
 <?php
 
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die('Access denied.');
 
 \Doctrine\Common\Annotations\AnnotationReader::addGlobalIgnoredName('pre');
 \Doctrine\Common\Annotations\AnnotationReader::addGlobalIgnoredName('protected');

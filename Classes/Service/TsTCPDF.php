@@ -3,16 +3,11 @@
 namespace Extcode\TCPDF\Service;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Fluid\View\StandaloneView;
+use TYPO3\CMS\Extbase\Mvc\Request;
 
 class TsTCPDF extends \TCPDF
 {
-    /**
-     * @var ObjectManager
-     */
-    protected $objectManager;
-
     /**
      * @var array
      */
@@ -22,14 +17,6 @@ class TsTCPDF extends \TCPDF
      * @var string
      */
     protected $pdfType;
-
-    /**
-     * @param ObjectManager $objectManager
-     */
-    public function injectObjectManager(ObjectManager $objectManager)
-    {
-        $this->objectManager = $objectManager;
-    }
 
     /**
      * @return string
@@ -246,9 +233,10 @@ class TsTCPDF extends \TCPDF
 
         if (!$view->getTemplatePathAndFilename()) {
             $logManager = GeneralUtility::makeInstance(
-                \TYPO3\CMS\Core\Log\LogManagerInterface::class
+                \TYPO3\CMS\Core\Log\LogManager::class
             );
             $logger = $logManager->getLogger(__CLASS__);
+            // @extensionScannerIgnoreLine
             $logger->error(
                 'Cannot find Template for PdfService',
                 [
@@ -259,7 +247,8 @@ class TsTCPDF extends \TCPDF
         }
 
         // set controller extension name for translation
-        $view->getRequest()->setControllerExtensionName('Tcpdf');
+        //generalUtility::makeInstance(Request::class)->setControllerExtensionName('Tcpdf');
+        //$view->getRequest()->setControllerExtensionName('Tcpdf');
 
         return $view;
     }
