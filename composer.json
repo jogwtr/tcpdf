@@ -22,10 +22,7 @@
     "autoload": {
         "psr-4": {
             "Extcode\\TCPDF\\": "Classes"
-        },
-        "classmap": [
-            "Resources/Private/Library/tcpdf"
-        ]
+        }
     },
     "config": {
         "vendor-dir": ".build/vendor",
@@ -56,7 +53,8 @@
     },
     "require": {
         "php": ">=7.2.0 <8.2",
-        "typo3/cms-core": "^12.4"
+        "typo3/cms-core": "^12.4",
+        "tecnickcom/tcpdf": "^6.9"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.0",
